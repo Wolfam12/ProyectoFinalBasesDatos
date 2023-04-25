@@ -1,6 +1,8 @@
 import sqlite3
 
 class Comunicacion():
+   
+  
     def __init__(self):
         self.conexion = sqlite3.connect('Chapicalzado.db')
         print('Me voy a ganar la beca')
@@ -25,7 +27,34 @@ class Comunicacion():
         cursor.close()
     def ActualizaDatosInventario(self,idInventario,Referencia,CantidadDisponible,CantidadVendida,FechaActualizacion,Costo,Proveedor,PrecioVenta,Producto):
          cursor=self.conexion.cursor() 
-         bd= ''' UPDATE FROM Inventario  SET Referencia ='{}', Referencia ='{}',CantidadDisponible ='{}',CantidadVendida ='{}',FechaActualizacion ='{}',Costo ='{}',Proveedor ='{}',PrecioVenta ='{}',Producto ='{}' WHERE idInventario ='{}' ''' .format(Referencia,CantidadDisponible,CantidadVendida,FechaActualizacion,Costo,Proveedor,PrecioVenta,Producto,idInventario)
+         bd= ''' UPDATE  Inventario  SET Referencia ='{}',CantidadDisponible ='{}',CantidadVendida ='{}',FechaActualizacion ='{}',Costo ='{}',Proveedor ='{}',PrecioVenta ='{}',Producto ='{}' WHERE idInventario ='{}' ''' .format(Referencia,CantidadDisponible,CantidadVendida,FechaActualizacion,Costo,Proveedor,PrecioVenta,Producto,idInventario)
+         cursor.execute(bd)
+         dato=cursor.rowcount
+         self.conexion.commit()
+         cursor.close() 
+         return dato
+    def insertarDatosClientes(self,Cedula,NombreCliente,CorreoElectronico,Celular,FechaNacimiento): 
+        cursor=self.conexion.cursor() 
+        bd= ''' INSERT INTO Clientes (Cedula,NombreCliente,CorreoElectronico,Celular,FechaNacimiento)
+        VALUES('{}','{}','{}','{}','{}')'''.format(Cedula,NombreCliente,CorreoElectronico,Celular,FechaNacimiento)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def mostarDatosClientes(self):
+        cursor=self.conexion.cursor()
+        bd="SELECT * FROM Clientes "
+        cursor.execute(bd)
+        datos=cursor.fetchall()
+        print(datos) 
+    def EliminarDatosClientes(self,IdCliente):
+        cursor=self.conexion.cursor()
+        bd='''DELETE FROM Clientes WHERE idInventario = '{}' '''.format(IdCliente)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def ActualizaDatosClientes(self,IdCliente,Cedula,NombreCliente,CorreoElectronico,Celular,FechaNacimiento):
+         cursor=self.conexion.cursor() 
+         bd=''' UPDATE  Clientes  SET Cedula ='{}', NombreCliente ='{}',CorreoElectronico ='{}',Celular ='{}',FechaNacimiento ='{}' WHERE IdCliente ='{}' ''' .format(Cedula,NombreCliente,CorreoElectronico,Celular,FechaNacimiento,IdCliente)
          cursor.execute(bd)
          dato=cursor.rowcount
          self.conexion.commit()
@@ -35,5 +64,9 @@ class Comunicacion():
 
 my_message = Comunicacion()
 my_message.__init__
-my_message.insertarDatosInventario("5412",50,2,"12/04/2002",120000,"NIKE",200000,"TENIS WALKING")
+
+
+my_message.ActualizaDatosClientes(1,1000494472,"Felipe Ortiz","Piperico@gmail.com",3103609736,"08/01/2002")
+my_message.ActualizaDatosInventario(7,"fvfvf",5,10,"12/98/56",4565,"Nike",7845454,"Sudadera")
+
 
