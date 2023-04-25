@@ -66,7 +66,7 @@ my_message = Comunicacion()
 my_message.__init__
 
 
-my_message.ActualizaDatosClientes(1,1000494472,"Felipe Ortiz","Piperico@gmail.com",3103609736,"08/01/2002")
-my_message.ActualizaDatosInventario(7,"fvfvf",5,10,"12/98/56",4565,"Nike",7845454,"Sudadera")
+my_message.insertarDatosClientes(1000494472,"Julian Ortiz","Piperico@gmail.com",3103609736,"08/01/2002")
+
 
 
