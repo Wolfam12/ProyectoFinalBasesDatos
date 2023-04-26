@@ -60,11 +60,99 @@ class Comunicacion():
          self.conexion.commit()
          cursor.close() 
          return dato
+    def insertarDatosEmpleado(self,CedulaEmpleado,Email,Salario,TipoEmpleado): 
+        cursor=self.conexion.cursor() 
+        bd= ''' INSERT INTO Empleado (CedulaEmpleado,Email,Salario,TipoEmpleado)
+        VALUES('{}','{}','{}','{}')'''.format(CedulaEmpleado,Email,Salario,TipoEmpleado)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def mostarDatosEmpleado(self):
+        cursor=self.conexion.cursor()
+        bd="SELECT * FROM Empleado "
+        cursor.execute(bd)
+        datos=cursor.fetchall()
+        print(datos) 
+    def EliminarDatosEmpleado(self,idEmpleado):
+        cursor=self.conexion.cursor()
+        bd='''DELETE FROM Empleado WHERE idEmpleado = '{}' '''.format(idEmpleado)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def ActualizaDatosEmpleado(self,idEmpleado,CedulaEmpleado,Email,Salario,TipoEmpleado):
+         cursor=self.conexion.cursor() 
+         bd=''' UPDATE  Empleado  SET  CedulaEmpleado ='{}',Email ='{}',Salario ='{}',TipoEmpleado ='{}' WHERE idEmpleado ='{}' ''' .format(CedulaEmpleado,Email,Salario,TipoEmpleado,idEmpleado)
+         cursor.execute(bd)
+         dato=cursor.rowcount
+         self.conexion.commit()
+         cursor.close() 
+         return dato
+    
+    def insertarDatosEnvio(self,Direccion,Celular,Correo,NombreCliente,NumeroGuia,EstadoEnvio,FechaEnvio,FechaEntrega,idFActura): 
+        cursor=self.conexion.cursor() 
+        bd= ''' INSERT INTO Envio (Direccion,Celular,Correo,NombreCliente,NumeroGuia,EstadoEnvio,FechaEnvio,FechaEntrega,idFActura)
+        VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}')'''.format(Direccion,Celular,Correo,NombreCliente,NumeroGuia,EstadoEnvio,FechaEnvio,FechaEntrega,idFActura)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def mostarDatosEnvio(self):
+        cursor=self.conexion.cursor()
+        bd="SELECT * FROM Envio "
+        cursor.execute(bd)
+        datos=cursor.fetchall()
+        print(datos) 
+    def EliminarDatosEnvio(self,idEnvio):
+        cursor=self.conexion.cursor()
+        bd='''DELETE FROM Envio WHERE idEnvio = '{}' '''.format(idEnvio)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def ActualizaDatosEnvio(self,idEnvio,Direccion,Celular,Correo,NombreCliente,NumeroGuia,EstadoEnvio,FechaEnvio,FechaEntrega,idFActura):
+         cursor=self.conexion.cursor() 
+         bd= ''' UPDATE  Envio  SET Direccion ='{}',Celular ='{}',Correo ='{}',NombreCliente ='{}',NumeroGuia ='{}',EstadoEnvio ='{}',FechaEnvio ='{}',FechaEntrega ='{}',idFActura ='{}' WHERE idEnvio ='{}' ''' .format(Direccion,Celular,Correo,NombreCliente,NumeroGuia,EstadoEnvio,FechaEnvio,FechaEntrega,idFActura,idEnvio)
+         cursor.execute(bd)
+         dato=cursor.rowcount
+         self.conexion.commit()
+         cursor.close() 
+         return dato
+
+    def insertarDatosSede(self,Direccion,Administrador,idAdministrador,CelularSede): 
+        cursor=self.conexion.cursor() 
+        bd= ''' INSERT INTO Sede (Direccion,Administrador,idAdministrador,CelularSede)
+        VALUES('{}','{}','{}','{}')'''.format(Direccion,Administrador,idAdministrador,CelularSede)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def mostarDatosSede(self):
+        cursor=self.conexion.cursor()
+        bd="SELECT * FROM Sede "
+        cursor.execute(bd)
+        datos=cursor.fetchall()
+        print(datos) 
+    def EliminarDatosSede(self,idSede):
+        cursor=self.conexion.cursor()
+        bd='''DELETE FROM Sede WHERE idSede = '{}' '''.format(idSede)
+        cursor.execute(bd)
+        self.conexion.commit()
+        cursor.close()
+    def ActualizaDatosSede(self,idSede,Direccion,Administrador,idAdministrador,CelularSede):
+         cursor=self.conexion.cursor() 
+         bd=''' UPDATE  Empleado  SET  Direccion ='{}',Administrador ='{}',idAdministrador ='{}',CelularSede ='{}' WHERE idSede ='{}' ''' .format(Direccion,Administrador,idAdministrador,CelularSede,idSede)
+         cursor.execute(bd)
+         dato=cursor.rowcount
+         self.conexion.commit()
+         cursor.close() 
+         return dato
+       
+
 
 
 my_message = Comunicacion()
 my_message.__init__
+my_message.ActualizaDatosSede(1,"4","77",85,741)
+my_message.mostarDatosSede
 
-my_message.mostarDatosClientes()
+
+
 
 
