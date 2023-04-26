@@ -48,7 +48,7 @@ class Comunicacion():
         print(datos) 
     def EliminarDatosClientes(self,IdCliente):
         cursor=self.conexion.cursor()
-        bd='''DELETE FROM Clientes WHERE idInventario = '{}' '''.format(IdCliente)
+        bd='''DELETE FROM Clientes WHERE IdCliente = '{}' '''.format(IdCliente)
         cursor.execute(bd)
         self.conexion.commit()
         cursor.close()
@@ -65,8 +65,6 @@ class Comunicacion():
 my_message = Comunicacion()
 my_message.__init__
 
-
-my_message.insertarDatosClientes(1000494472,"Julian Ortiz","Piperico@gmail.com",3103609736,"08/01/2002")
-
+my_message.mostarDatosClientes()
 
 
