@@ -172,7 +172,7 @@ class App(Frame):
                     if cedula and nombre and correo and celular and fecha != '':
                         self.base_datos.ActualizaDatosClientes(Id,cedula,nombre,correo,celular,fecha)
                         self.tabla.delete(*self.tabla.get_children())
-                        datos = self.base_datos.mostrarDatosclientes()
+                        datos = self.base_datos.mostarDatosClientes()
                         i=-1
                         for dato in datos:
                             i=i+1
@@ -194,7 +194,7 @@ class App(Frame):
             self.base_datos.ActualizaDatosClientes(self.data['text'],cedula,nombre,correo,celular,fecha)
             self.tabla.insert('',0, text = id, values= (cedula,nombre,correo,celular,fecha))
             self.tabla.delete(item)
-            self.actualizar_tabla()
+            self.actualizar_datos_inventario()
             
         
 if __name__ == "__main__":

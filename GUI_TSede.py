@@ -182,7 +182,7 @@ class App(Frame):
             self.base_datos.ActualizaDatosSede(self.data['text'],direccion,administrador,idadmin,celular)
             self.tabla.insert('',0, text = id, values= (direccion,administrador,idadmin,celular))
             self.tabla.delete(item)
-            self.actualizar_tabla()
+            self.actualizar_datos_inventario()
             
         
 if __name__ == "__main__":
