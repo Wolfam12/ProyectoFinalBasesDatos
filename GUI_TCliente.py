@@ -157,12 +157,12 @@ class App(Frame):
     def actualizar_datos_inventario(self):
         item = self.tabla.focus()
         self.data = self.tabla.item(item)
-        Cedula = self.data['values'][0]
-        datos = self.base_datos.mostrarDatosclientes()
+        cedula= self.data['values'][0]
+        datos = self.base_datos.mostarDatosClientes()
         for fila in datos:
             Id = fila[0]
             Cedula_bd= fila[1]
-            if Cedula_bd == Cedula:
+            if Cedula_bd == cedula:
                 if Id != None:
                     cedula = self.cedula.get()
                     nombre = self.Nombre.get()
