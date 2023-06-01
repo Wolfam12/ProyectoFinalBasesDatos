@@ -19,6 +19,7 @@ class Comunicacion():
         cursor.execute(bd)
         datos=cursor.fetchall()
         print(datos) 
+        return datos
     def EliminarDatosInventario(self,idInventario):
         cursor=self.conexion.cursor()
         bd='''DELETE FROM Inventario WHERE idInventario = '{}' '''.format(idInventario)
@@ -46,6 +47,7 @@ class Comunicacion():
         cursor.execute(bd)
         datos=cursor.fetchall()
         print(datos) 
+        return datos
     def EliminarDatosClientes(self,IdCliente):
         cursor=self.conexion.cursor()
         bd='''DELETE FROM Clientes WHERE IdCliente = '{}' '''.format(IdCliente)
@@ -72,7 +74,8 @@ class Comunicacion():
         bd="SELECT * FROM Empleado "
         cursor.execute(bd)
         datos=cursor.fetchall()
-        print(datos) 
+        print(datos)
+        return datos
     def EliminarDatosEmpleado(self,idEmpleado):
         cursor=self.conexion.cursor()
         bd='''DELETE FROM Empleado WHERE idEmpleado = '{}' '''.format(idEmpleado)
@@ -100,7 +103,8 @@ class Comunicacion():
         bd="SELECT * FROM Envio "
         cursor.execute(bd)
         datos=cursor.fetchall()
-        print(datos) 
+        print(datos)
+        return datos
     def EliminarDatosEnvio(self,idEnvio):
         cursor=self.conexion.cursor()
         bd='''DELETE FROM Envio WHERE idEnvio = '{}' '''.format(idEnvio)
@@ -128,7 +132,8 @@ class Comunicacion():
         bd="SELECT * FROM Sede "
         cursor.execute(bd)
         datos=cursor.fetchall()
-        print(datos) 
+        print(datos)
+        return datos
     def EliminarDatosSede(self,idSede):
         cursor=self.conexion.cursor()
         bd='''DELETE FROM Sede WHERE idSede = '{}' '''.format(idSede)
@@ -137,7 +142,7 @@ class Comunicacion():
         cursor.close()
     def ActualizaDatosSede(self,idSede,Direccion,Administrador,idAdministrador,CelularSede):
          cursor=self.conexion.cursor() 
-         bd=''' UPDATE  Empleado  SET  Direccion ='{}',Administrador ='{}',idAdministrador ='{}',CelularSede ='{}' WHERE idSede ='{}' ''' .format(Direccion,Administrador,idAdministrador,CelularSede,idSede)
+         bd=''' UPDATE  Sede  SET  Direccion ='{}',Administrador ='{}',idAdministrador ='{}',CelularSede ='{}' WHERE idSede ='{}' ''' .format(Direccion,Administrador,idAdministrador,CelularSede,idSede)
          cursor.execute(bd)
          dato=cursor.rowcount
          self.conexion.commit()
